@@ -1,5 +1,5 @@
 # Pattern-Detector
-Understanding the different types of FSMs for pattern detection.
+Understanding the different styles of FSMs for pattern detection.
 
 A single FSM module to find the a pattern of an 8-bit input stream – the characters “bomb” (98,111,109, 98) – and produce an output signal when an end ’b’ is found within an instance the pattern. 
 Once an end ’b’ in the a pattern is found, the output signal stays high until the input ack signal goes from low to high.
