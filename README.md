@@ -11,5 +11,7 @@ b) One sequential always block style with registered outputs. Files - PatternDet
 
 c) Three always block style with registered outputs. Files - PatternDetector3.sv, PatternDetector3_tb.sv, input_data3.txt
 
-d) Two always block style with combinational outputs. Files - PatternDetector4.sv, PatternDetector4_tb.sv, input_data4.txt
+d) Two always block style with combinational outputs, but output matched with the registered output style FSM.
+Files - PatternDetector4.sv, PatternDetector4_tb.sv, input_data4.txt
 
+Report containing the simulation and synthesis results can be found at https://github.com/AniketBadhan/Pattern-Detector/blob/master/Pattern%20Detection.pdf
