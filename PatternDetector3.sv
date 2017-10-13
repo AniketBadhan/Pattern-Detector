@@ -28,57 +28,57 @@ module PatternDetector3(
 	
 	always_comb begin
 		case (current_state)
-			RESET		:	begin
-								if(ack == 1'b1 && data == 8'b01100010) begin
-									next_state = B1;
-								end
-								else begin
-									next_state = RESET;
-								end
-							end
-			B1			:	begin
-								if(data == 8'b01101111) begin
-									next_state = O;
-								end
-								else begin
-									next_state = RESET;
-								end
-							end
-			O			:	begin
-							if(data == 8'b01101101) begin
-								next_state = M;
-							end
-							else begin
-								next_state = RESET;
-							end
+			RESET	:	begin
+						if(ack == 1'b1 && data == 8'b01100010) begin
+							next_state = B1;
 						end
-			M			:	begin
-								if(data == 8'b01100010) begin
-									next_state = B2;
-								end
-								else begin
-									next_state = RESET;
-								end
-							end
-			B2			:	begin
-								if(ack == 0) begin
-									next_state = WAIT_ACK;
-								end
-								else begin
-									next_state = B2;
-								end
-							end
+						else begin
+							next_state = RESET;
+						end
+					end
+			B1	:	begin
+						if(data == 8'b01101111) begin
+							next_state = O;
+						end
+						else begin
+							next_state = RESET;
+						end
+					end
+			O	:	begin
+						if(data == 8'b01101101) begin
+							next_state = M;
+						end
+						else begin
+							next_state = RESET;
+						end
+					end
+			M	:	begin
+						if(data == 8'b01100010) begin
+							next_state = B2;
+						end
+						else begin
+							next_state = RESET;
+						end
+					end
+			B2	:	begin
+						if(ack == 0) begin
+							next_state = WAIT_ACK;
+						end
+						else begin
+							next_state = B2;
+						end
+					end
 			WAIT_ACK:	begin
-								if(ack == 0) begin
-									next_state = WAIT_ACK;
-								end
-								else begin
-									next_state = RESET;
-								end
-							end
+						if(ack == 0) begin
+							next_state = WAIT_ACK;
+						end
+						else begin
+							next_state = RESET;
+						end
+					end
 			default	:	begin
-								next_state = RESET;
-							end						
+						next_state = RESET;
+					end						
 		endcase
 	end
 	
@@ -88,27 +88,27 @@ module PatternDetector3(
 		end
 		else begin
 			case(next_state)
-				RESET		:	begin
-									found_pattern <= 1'b0;
-								end
-				B1			:	begin
-									found_pattern <= 1'b0;
-								end
-				O			:	begin
-									found_pattern <= 1'b0;
-								end
-				M			:	begin
-									found_pattern <= 1'b0;
-								end
-				B2			:	begin
-									found_pattern <= 1'b1;
-								end
-				WAIT_ACK	:	begin
-									found_pattern <= 1'b1;
-								end
+				RESET	:	begin
+							found_pattern <= 1'b0;
+						end
+				B1	:	begin
+							found_pattern <= 1'b0;
+						end
+				O	:	begin
+							found_pattern <= 1'b0;
+						end
+				M	:	begin
+							found_pattern <= 1'b0;
+						end
+				B2	:	begin
+							found_pattern <= 1'b1;
+						end
+				WAIT_ACK:	begin
+							found_pattern <= 1'b1;
+						end
 				default	:	begin
-									found_pattern <= 1'b0;
-								end
+							found_pattern <= 1'b0;
+						end
 			endcase
 		end
 	end
